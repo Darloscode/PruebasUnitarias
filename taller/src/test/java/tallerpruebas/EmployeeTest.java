@@ -41,4 +41,48 @@ public class EmployeeTest {
         assertEquals(380.00, Math.round(noUSD.cs() * 100d) / 100d);
     }
     
+    
+    /**
+     * Test of CalculateYearBonus method, of class Employee.
+     */
+    @Test
+    public void testCalculateYearBonusisNull() {        
+        Employee instance = null;
+        float expResult = 0;
+        float result = instance.CalculateYearBonus();
+        assertEquals(expResult, result, 0);        
+    }   
+    
+    @Test
+    public void testCalculateYearBonusWorker() {        
+        Employee instance = new Employee(344, "USD", 34, EmployeeType.Worker);
+        float expResult = 386;
+        float result = instance.CalculateYearBonus();
+        assertEquals(expResult, result);                
+    }
+    
+    @Test
+    public void testCalculateYearBonusSupervisor() {             
+        Employee instance = new Employee(344, "USD", 34, EmployeeType.Supervisor);
+        float expResult = 537;
+        float result = instance.CalculateYearBonus();
+        assertEquals(expResult, result);                
+    }
+
+    @Test
+    public void testCalculateYearBonusManager() {           
+        Employee instance = new Employee(344, "USD", 34, EmployeeType.Manager);
+        float expResult = 730;
+        float result = instance.CalculateYearBonus();
+        assertEquals(expResult, result);                
+    }
+    
+    @Test
+    public void testCalculateYearBonusNotUSD() {        
+        Employee instance = new Employee(344, "EUR", 34, EmployeeType.Worker);
+        float expResult = 386;
+        float result = instance.CalculateYearBonus();
+        assertEquals(expResult, result);              
+    }
+    
 }
